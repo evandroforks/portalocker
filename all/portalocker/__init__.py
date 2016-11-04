@@ -64,4 +64,3 @@ __all__ = [
     'AlreadyLocked',
     'open_atomic',
 ]
-
