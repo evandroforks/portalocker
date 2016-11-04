@@ -15,7 +15,7 @@ with open('portalocker/__about__.py') as fp:
 
 
 install_requires = []
-setup_requires = []
+setup_requires = ['pytest-runner']
 tests_require = [
     'flake8>=3.5.0',
     'pytest>=3.4.0',
