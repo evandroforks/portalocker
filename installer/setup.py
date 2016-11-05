@@ -27,7 +27,7 @@ tests_require = [
 ]
 
 
-if sys.platform == 'win32':
+if sys.platform == 'win32' or os.name == 'nt':
     try:
         import pywin32
     except ImportError:
