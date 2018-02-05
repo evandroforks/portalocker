@@ -14,6 +14,24 @@ portalocker - Cross-platform locking library
     :alt: Coverage Status
     :target: https://coveralls.io/r/WoLpH/portalocker?branch=master
 
+Usage
+--------
+
+.. code:: javascript
+
+    pip install portalocker
+
+
+Or clone this repository locally by running the commands:
+
+.. code:: javascript
+
+    git clone https://github.com/evandrocoan/PortalockerFiles
+    cd PortalockerFiles
+
+Then ``python setup install`` or ``python setup develop`` to install it on development mode.
+
+
 Overview
 --------
 
@@ -91,7 +109,7 @@ Sublime Text Dependency
 -------
 
 To use this as a Package Control Dependency https://packagecontrol.io/docs/dependencies create
-this file on the root of your Package:
+this ``dependencies.json`` file on the root of your Package:
 
 .. code:: javascript
 
