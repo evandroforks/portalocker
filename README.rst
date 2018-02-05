@@ -96,10 +96,14 @@ this file on the root of your Package:
 .. code:: javascript
 
     {
+        "windows": {
+            ">3000": [
+                "python-pywin32"
+            ]
+        },
         "*": {
             "*": [
-                "PortalockerFiles",
-                "python-pywin32"
+                "PortalockerFiles"
             ]
         }
     }
