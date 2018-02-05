@@ -86,3 +86,21 @@ License
 
 See the `LICENSE <https://github.com/WoLpH/portalocker/blob/develop/LICENSE>`_ file.
 
+
+Sublime Text Dependency
+-------
+
+To use this as a Package Control Dependency https://packagecontrol.io/docs/dependencies create
+this file on the root of your Package:
+
+.. code:: javascript
+
+    {
+        "*": {
+            "*": [
+                "PortalockerFiles",
+                "python-pywin32"
+            ]
+        }
+    }
+
