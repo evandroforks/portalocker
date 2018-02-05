@@ -3,4 +3,5 @@ locked_file
 dist
 htmlcov
 *.egg-info
+*.pyc
 .cache
