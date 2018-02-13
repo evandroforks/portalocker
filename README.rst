@@ -29,7 +29,7 @@ Or clone this repository locally by running the commands:
     git clone https://github.com/evandrocoan/PortalockerFiles
     cd PortalockerFiles
 
-Then ``python setup install`` or ``python setup develop`` to install it on development mode.
+Then ``python setup.py install`` or ``python setup.py develop`` to install it on development mode.
 
 
 Overview
