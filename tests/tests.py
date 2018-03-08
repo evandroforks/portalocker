@@ -152,3 +152,51 @@ def test_rlock_acquire_release(tmpfile):
 def test_release_unacquired(tmpfile):
     with pytest.raises(portalocker.LockException):
         portalocker.RLock(tmpfile).release()
+
+
+def test_exlusive(tmpfile):
+    with open(tmpfile, 'w') as fh:
+        fh.write('spam and eggs')
+
+    fh = open(tmpfile, 'r')
+    portalocker.lock(fh, portalocker.LOCK_EX | portalocker.LOCK_NB)
+
+    # Make sure we can't read the locked file
+    with pytest.raises(portalocker.LockException):
+        with open(tmpfile, 'r') as fh2:
+            portalocker.lock(fh2, portalocker.LOCK_EX | portalocker.LOCK_NB)
+            fh2.read()
+
+    # Make sure we can't write the locked file
+    with pytest.raises(portalocker.LockException):
+        with open(tmpfile, 'w+') as fh2:
+            portalocker.lock(fh2, portalocker.LOCK_EX | portalocker.LOCK_NB)
+            fh2.write('surprise and fear')
+
+    # Make sure we can explicitly unlock the file
+    portalocker.unlock(fh)
+    fh.close()
+
+
+def test_shared(tmpfile):
+    with open(tmpfile, 'w') as fh:
+        fh.write('spam and eggs')
+
+    f = open(tmpfile, 'r')
+    portalocker.lock(f, portalocker.LOCK_SH | portalocker.LOCK_NB)
+
+    # Make sure we can read the locked file
+    with open(tmpfile, 'r') as fh2:
+        portalocker.lock(fh2, portalocker.LOCK_SH | portalocker.LOCK_NB)
+        assert fh2.read() == 'spam and eggs'
+
+    # Make sure we can't write the locked file
+    with pytest.raises(portalocker.LockException):
+        with open(tmpfile, 'w+') as fh2:
+            portalocker.lock(fh2, portalocker.LOCK_EX | portalocker.LOCK_NB)
+            fh2.write('surprise and fear')
+
+    # Make sure we can explicitly unlock the file
+    portalocker.unlock(f)
+    f.close()
+
