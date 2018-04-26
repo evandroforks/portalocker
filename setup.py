@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
+from __future__ import print_function
 
 
 try:
@@ -5,7 +9,6 @@ try:
 
 except ImportError:
 
-    from __future__ import print_function
 
     import re
     import os
