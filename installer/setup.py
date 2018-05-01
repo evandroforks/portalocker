@@ -7,6 +7,16 @@ import os
 import sys
 import setuptools
 from setuptools.command.test import test as TestCommand
+from distutils.version import StrictVersion
+from setuptools import __version__ as setuptools_version
+
+
+if StrictVersion(setuptools_version) < StrictVersion('38.3.0'):
+    raise SystemExit(
+        'Your `setuptools` version is old. '
+        'Please upgrade setuptools by running `pip install -U setuptools` '
+        'and try again.'
+    )
 
 
 # To prevent importing about and thereby breaking the coverage info we use this
@@ -139,11 +149,10 @@ if __name__ == '__main__':
         install_requires=install_requires,
         setup_requires=setup_requires,
         tests_require=tests_require,
-        extras_require={
-            'docs': [
-                'sphinx<1.7.0',
+        extras_require=dict(
+            docs=[
+                'sphinx>=1.7.1',
             ],
-            'tests': tests_require,
-        },
+            tests=tests_require,
+        ),
     )
-
