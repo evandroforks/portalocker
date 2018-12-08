@@ -26,8 +26,8 @@ Or clone this repository locally by running the commands:
 
 .. code:: javascript
 
-    git clone https://github.com/evandrocoan/PortalockerFiles
-    cd PortalockerFiles
+    git clone https://github.com/evandrocoan/portalockerfiles
+    cd portalockerfiles
 
 Then ``python setup.py install`` or ``python setup.py develop`` to install it on development mode.
 
@@ -117,12 +117,12 @@ this ``dependencies.json`` file on the root of your Package:
         "windows": {
             ">3000": [
                 "python-pywin32",
-                "PortalockerFiles"
+                "portalockerfiles"
             ]
         },
         "*": {
             "*": [
-                "PortalockerFiles"
+                "portalockerfiles"
             ]
         }
     }
