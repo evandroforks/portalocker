@@ -22,7 +22,7 @@ if StrictVersion(setuptools_version) < StrictVersion('38.3.0'):
 # To prevent importing about and thereby breaking the coverage info we use this
 # exec hack
 about = {}
-with open('portalocker/__about__.py') as fp:
+with open('all/portalocker/__about__.py') as fp:
     exec(fp.read(), about)
 
 
