@@ -19,12 +19,20 @@ if StrictVersion(setuptools_version) < StrictVersion('38.3.0'):
     )
 
 
+def get_relative_path(relative_path, script_file):
+    """
+        Computes a relative path for a file on the same folder as this class file declaration.
+        https://stackoverflow.com/questions/4381569/python-os-module-open-file-above-current-directory-with-relative-path
+    """
+    basepath = os.path.dirname( script_file )
+    filepath = os.path.abspath( os.path.join( basepath, relative_path ) )
+    return filepath
+
 # To prevent importing about and thereby breaking the coverage info we use this
 # exec hack
 about = {}
-with open('all/portalocker/__about__.py') as fp:
+with open( get_relative_path( '../all/portalocker/__about__.py', __file__ ) ) as fp:
     exec(fp.read(), about)
-
 
 install_requires = []
 setup_requires = ['pytest-runner']
@@ -117,7 +125,7 @@ class Combine(setuptools.Command):
         print('Wrote combined file to %r' % self.output_file)
 
 
-if __name__ == '__main__':
+def install():
     setuptools.setup(
         name=about['__package_name__'],
         version=about['__version__'],
@@ -156,3 +164,7 @@ if __name__ == '__main__':
             tests=tests_require,
         ),
     )
+
+
+if __name__ == '__main__':
+    install()
